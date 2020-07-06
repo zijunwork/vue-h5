@@ -1,24 +1,21 @@
 # vue-h5
 
-## Project setup
+#### 项目安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### 开发运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### 生产编译
 ```
 npm run build
 ```
 
-### Lints and fixes files
+#### 代码规范修复
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
