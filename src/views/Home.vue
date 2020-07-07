@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
+    <!-- hello world -->
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
@@ -13,6 +14,9 @@ export default {
   name: "Home",
   components: {
     HelloWorld
+  },
+  mounted() {
+    console.log("8989");
   }
 };
 </script>

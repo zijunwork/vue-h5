@@ -8,17 +8,11 @@ module.exports = {
   extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
 
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint"
   },
 
   rules: {
-    'no-console': 'off',
-    'no-debugger': 'off'
-  },
-
-  'extends': [
-    'plugin:vue/strongly-recommended',
-    'eslint:recommended',
-    '@vue/prettier'
-  ]
+    "no-console": "off",
+    "no-debugger": "off"
+  }
 };
