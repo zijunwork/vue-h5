@@ -17,7 +17,7 @@ const path = require("path");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const resolve = dir => path.join(__dirname, dir);
-const PORT = process.env.port || 8088;
+const PORT = process.env.PORT || 8088;
 const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV);
 const IS_NOT_DEV = process.env.NODE_ENV !== "development";
 const cdn = {
@@ -39,7 +39,6 @@ const externals = {
 module.exports = {
   publicPath: IS_PROD ? "/" : "/",
   outputDir: process.env.outputDir || "dist",
-  lintOnSave: !IS_PROD,
   productionSourceMap: false,
   parallel: require("os").cpus().length > 1,
   pwa: {
@@ -77,7 +76,7 @@ module.exports = {
       .set("utils", resolve("src/utils"))
       .set("assets", resolve("src/assets"))
       .set("store", resolve("src/store"))
-      .set("style", resolve("src/style"));
+      .set("styles", resolve("src/styles"));
 
     if (IS_NOT_DEV) {
       config.optimization.splitChunks({
@@ -127,6 +126,7 @@ module.exports = {
       config.plugin("analyzer").use(BundleAnalyzerPlugin);
     }
   },
+
   configureWebpack: config => {
     if (IS_PROD) {
       config.externals = externals;
@@ -138,7 +138,9 @@ module.exports = {
       });
     }
   },
+
   devServer: {
+    host: require("./src/utils/get-ip"),
     port: PORT,
     open: true,
     https: false,

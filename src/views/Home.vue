@@ -1,22 +1,19 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <!-- hello world -->
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <p @click="jumpToAbout">Hello World!</p>
+    <label>
+      <input type="text" :value="888" />
+    </label>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  },
-  mounted() {
-    console.log("8989");
+  methods: {
+    jumpToAbout() {
+      this.$router.push({ name: "about" });
+    }
   }
 };
 </script>

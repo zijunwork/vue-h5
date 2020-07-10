@@ -1,32 +1,71 @@
+<!--
+ * @Overview:   App file
+ * @Author:     Zi_Jun
+ * @Email:      zijun2030@163.com
+ * @Date:       2020/7/8 15:43
+ * @Mark:
+ -->
+
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <transition :name="transitionName">
+      <keep-alive :max="10" v-if="$route.meta.keepAlive">
+        <router-view class="router"></router-view>
+      </keep-alive>
+      <router-view v-else class="router"></router-view>
+    </transition>
   </div>
 </template>
+<script>
+import { mapGetters, mapMutations } from "vuex";
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
+  data() {
+    return {};
+  },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  computed: {
+    ...mapGetters("settings", ["openPageTrans", "transDirection"]),
 
-    &.router-link-exact-active {
-      color: #42b983;
+    transitionName() {
+      return this.openPageTrans ? this.transDirection : "";
+    }
+  },
+
+  mounted() {
+    // TODO...
+  },
+
+  methods: {
+    ...mapMutations("settings", ["SET_TRANS_DIRECTION"])
+  },
+
+  watch: {
+    $route(to, from) {
+      const toT = parseInt(to.meta.t),
+        fromT = parseInt(from.meta.t);
+      if (
+        this.openPageTrans &&
+        this.transDirection &&
+        this.transDirection.includes("slide") &&
+        toT &&
+        fromT
+      ) {
+        this.SET_TRANS_DIRECTION(`slide-${toT < fromT ? "right" : "left"}`);
+      } else if (
+        this.openPageTrans &&
+        this.transDirection &&
+        this.transDirection === "fade" &&
+        toT &&
+        fromT
+      ) {
+        this.SET_TRANS_DIRECTION("fade");
+      } else {
+        // Do nothing
+      }
     }
   }
-}
-</style>
+};
+</script>
