@@ -8,12 +8,15 @@
       @click-left="onClickLeft"
     />
     <van-cell-group>
-      <van-switch-cell
-        v-model="openPageTransValue"
-        icon="logistics"
-        title="开启页面切换动画"
-        @change="onOpenPageTransChange"
-      />
+      <van-cell center title="开启页面切换动画" icon="logistics">
+        <template #right-icon>
+          <van-switch
+            v-model="openPageTransValue"
+            size="24"
+            @change="onOpenPageTransChange"
+          />
+        </template>
+      </van-cell>
       <van-cell
         title="页面切换样式"
         icon="exchange"
@@ -28,12 +31,15 @@
           />
         </van-dropdown-menu>
       </van-cell>
-      <van-switch-cell
-        v-model="openVConsoleValue"
-        icon="eye-o"
-        title="开启VConsole"
-        @change="onVConsoleChange"
-      />
+      <van-cell center title="开启VConsole" icon="eye-o">
+        <template #right-icon>
+          <van-switch
+            v-model="openVConsoleValue"
+            size="24"
+            @change="onVConsoleChange"
+          />
+        </template>
+      </van-cell>
     </van-cell-group>
   </div>
 </template>
@@ -41,8 +47,8 @@
 <script>
 import {
   Cell,
+  Switch,
   CellGroup,
-  SwitchCell,
   NavBar,
   DropdownMenu,
   DropdownItem,
@@ -55,8 +61,8 @@ export default {
 
   components: {
     [Cell.name]: Cell,
+    [Switch.name]: Switch,
     [CellGroup.name]: CellGroup,
-    [SwitchCell.name]: SwitchCell,
     [NavBar.name]: NavBar,
     [DropdownMenu.name]: DropdownMenu,
     [DropdownItem.name]: DropdownItem,

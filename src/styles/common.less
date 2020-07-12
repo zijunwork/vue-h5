@@ -46,6 +46,7 @@ textarea {
   right: 0;
   bottom: 0;
   left: 0;
+  user-select: none;
   @supports (bottom: env(safe-area-inset-bottom)){
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -54,6 +55,33 @@ textarea {
     padding-top: constant(safe-area-inset-top);
     padding-bottom: constant(safe-area-inset-bottom);
   }
+}
+
+/*=====================================
+ Iconfont
+======================================*/
+@font-face { /* Unicode  */
+  font-family: "iconfont";
+  src: url("../assets/iconfont/iconfont.eot");
+  src: url("../assets/iconfont/iconfont.eot?#iefix") format("embedded-opentype"),
+  url("../assets/iconfont/iconfont.woff2") format("woff2"),
+  url("../assets/iconfont/iconfont.woff") format("woff"),
+  url("../assets/iconfont/iconfont.ttf") format("truetype"),
+  url("../assets/iconfont/iconfont.svg#iconfont") format("svg");
+}
+.iconfont {
+  font-family: "iconfont", serif !important;
+  font-size: 1em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon {
+  width: 2em;
+  height: 2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 
 /*=====================================
@@ -73,7 +101,7 @@ textarea {
 .fade-enter-active,
 .fade-leave-active{
   will-change: transform;
-  transition: all @transition-time;
+  transition: all @transition-time linear 100ms;
   position: absolute;
   width: 100%;
   left: 0;

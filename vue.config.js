@@ -132,7 +132,7 @@ module.exports = {
       config.externals = externals;
       config.optimization.minimizer.map(arg => {
         const OPTION = arg.options.terserOptions.compress;
-        OPTION.drop_console = true;
+        // OPTION.drop_console = true;
         OPTION.pure_funcs = ["console.*"];
         arg.extractComments = false;
       });

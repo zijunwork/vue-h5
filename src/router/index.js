@@ -1,40 +1,58 @@
+/*
+ * @Overview:   Router entry file
+ * @Author:     Zi_Jun
+ * @Email:      zijun2030@163.com
+ * @Date:       2020/7/11 13:20
+ * @Mark:       //
+ */
+
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import DemoHome from "views/DemoHome.vue";
+import { IS_PROD } from "utils/const";
 
 Vue.use(VueRouter);
+let reg = /^((?!exclude).)*$/;
+console.log(reg.test("demo-exclude.js"));
+console.log(reg.test("router-abnormal.js"));
+
+const routerModules = [];
+let routerFiles = IS_PROD
+  ? require.context("./modules", false, /^((?!exclude).)*\.js$/)
+  : require.context("./modules", false, /\.js$/);
+console.log(routerFiles);
+routerFiles.keys().forEach(name => {
+  routerModules.push(...routerFiles(name).default);
+});
+
+console.log(routerModules);
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "DemoHome",
     meta: {
       title: "首页",
-      keepAlive: true
+      keepAlive: false,
+      requireAuth: false
     },
-    component: Home
+    component: DemoHome
   },
+  ...routerModules,
   {
-    path: "/about",
-    name: "about",
+    path: "*",
+    name: "NotFound",
     meta: {
-      title: "关于",
-      keepAlive: true
+      title: "NotFound",
+      keepAlive: true,
+      requireAuth: false
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  },
-  {
-    path: "/settings",
-    name: "settings",
-    meta: {
-      title: "设置",
-      keepAlive: true
-    },
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Settings.vue")
+      import(/* webpackChunkName: "error" */ "../views/abnormal/404.vue")
   }
 ];
+
+console.log(routes);
 
 const router = new VueRouter({
   mode: "history",
@@ -43,11 +61,6 @@ const router = new VueRouter({
   scrollBehavior(to, from, savedPosition) {
     return savedPosition ? savedPosition : { x: 0, y: 0 };
   }
-});
-
-router.beforeEach((to, from, next) => {
-  !to.meta.t && (to.meta.t = new Date().getTime().toString());
-  next();
 });
 
 export default router;

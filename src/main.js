@@ -2,10 +2,11 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
-import store from "./store";
+import "./router/router-hook";
+import store from "store";
 import "amfe-flexible";
 import "styles/index.less";
-import "./utils/init-events";
+import "utils/init-events";
 import settings from "./settings";
 
 Vue.prototype.$settings = settings;
