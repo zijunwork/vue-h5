@@ -9,7 +9,7 @@
 <template>
   <div class="demo-home">
     <div class="demo-home-title">
-      <img src="../assets/images/logo.png" alt="" />
+      <svg-icon icon-class="logo" class="logo-icon"></svg-icon>
       <span>Vue-H5</span>
     </div>
     <p class="demo-home-desc">集成式、优化式Vue+Vant框架</p>

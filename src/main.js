@@ -1,9 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
+import "./assets/iconfont/iconfont";
 import "./registerServiceWorker";
 import router from "./router";
 import "./router/router-hook";
-import "./assets/iconfont/iconfont";
+import "./assets/icons/index";
 import store from "store";
 import "amfe-flexible";
 import "styles/index.less";
