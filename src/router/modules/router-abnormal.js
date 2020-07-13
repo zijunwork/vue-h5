@@ -11,7 +11,7 @@ export default [
     path: "/404",
     name: "NotFound",
     meta: {
-      title: "Error",
+      title: "NotFound",
       keepAlive: true,
       requireAuth: false
     },

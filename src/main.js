@@ -3,6 +3,7 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import "./router/router-hook";
+import "./assets/iconfont/iconfont";
 import store from "store";
 import "amfe-flexible";
 import "styles/index.less";

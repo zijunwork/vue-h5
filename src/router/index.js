@@ -12,20 +12,14 @@ import DemoHome from "views/DemoHome.vue";
 import { IS_PROD } from "utils/const";
 
 Vue.use(VueRouter);
-let reg = /^((?!exclude).)*$/;
-console.log(reg.test("demo-exclude.js"));
-console.log(reg.test("router-abnormal.js"));
 
 const routerModules = [];
 let routerFiles = IS_PROD
   ? require.context("./modules", false, /^((?!exclude).)*\.js$/)
   : require.context("./modules", false, /\.js$/);
-console.log(routerFiles);
 routerFiles.keys().forEach(name => {
   routerModules.push(...routerFiles(name).default);
 });
-
-console.log(routerModules);
 
 const routes = [
   {
@@ -51,8 +45,6 @@ const routes = [
       import(/* webpackChunkName: "error" */ "../views/abnormal/404.vue")
   }
 ];
-
-console.log(routes);
 
 const router = new VueRouter({
   mode: "history",

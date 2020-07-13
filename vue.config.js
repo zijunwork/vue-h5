@@ -38,7 +38,7 @@ const externals = {
 
 module.exports = {
   publicPath: IS_PROD ? "/" : "/",
-  outputDir: process.env.outputDir || "dist",
+  outputDir: process.env.OUTPUT_DIR || "dist",
   productionSourceMap: false,
   parallel: require("os").cpus().length > 1,
   pwa: {
@@ -132,7 +132,7 @@ module.exports = {
       config.externals = externals;
       config.optimization.minimizer.map(arg => {
         const OPTION = arg.options.terserOptions.compress;
-        // OPTION.drop_console = true;
+        OPTION.drop_console = true;
         OPTION.pure_funcs = ["console.*"];
         arg.extractComments = false;
       });
