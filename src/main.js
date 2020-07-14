@@ -10,8 +10,10 @@ import "amfe-flexible";
 import "styles/index.less";
 import "utils/init-events";
 import settings from "./settings";
+import apis from "./api";
 
 Vue.prototype.$settings = settings;
+Vue.prototype.$apis = apis;
 
 Vue.config.productionTip = false;
 
