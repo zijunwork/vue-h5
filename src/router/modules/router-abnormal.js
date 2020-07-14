@@ -13,6 +13,7 @@ export default [
     meta: {
       title: "NotFound",
       keepAlive: true,
+      showNavBar: true,
       requireAuth: false
     },
     component: () =>

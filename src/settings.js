@@ -4,5 +4,7 @@ module.exports = {
   // 页面切换动画,支持 "slide"/"fade"
   transDirection: "slide",
   // 是否开启VConsole
-  openVConsole: true
+  openVConsole: true,
+  // 是否全局开启导航栏
+  fixedNavBar: false
 };

@@ -28,6 +28,7 @@ const routes = [
     meta: {
       title: "首页",
       keepAlive: false,
+      showNavBar: false,
       requireAuth: false
     },
     component: DemoHome
@@ -39,6 +40,7 @@ const routes = [
     meta: {
       title: "NotFound",
       keepAlive: true,
+      showNavBar: true,
       requireAuth: false
     },
     component: () =>

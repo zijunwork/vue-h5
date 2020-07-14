@@ -13,6 +13,7 @@ export default [
     meta: {
       title: "系统设置",
       keepAlive: true,
+      showNavBar: true,
       requireAuth: false
     },
     component: () => import(/* webpackChunkName: "demo" */ "views/Settings")

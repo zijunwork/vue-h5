@@ -6,10 +6,16 @@
  * @Mark:       //
  */
 
-const [SET_TRANS_DIRECTION, SET_OPEN_PAGE_TRANS, SET_OPEN_VCONSOLE] = [
+const [
+  SET_TRANS_DIRECTION,
+  SET_OPEN_PAGE_TRANS,
+  SET_OPEN_VCONSOLE,
+  SET_FIXED_NAV_BAR
+] = [
   "SET_TRANS_DIRECTION",
   "SET_OPEN_PAGE_TRANS",
-  "SET_OPEN_VCONSOLE"
+  "SET_OPEN_VCONSOLE",
+  "SET_FIXED_NAV_BAR"
 ];
 import defaultSettings from "../../settings";
 const getTransDirection = () => {
@@ -36,7 +42,8 @@ export default {
   state: {
     openPageTrans: null,
     transDirection: "",
-    openVConsole: null
+    openVConsole: null,
+    fixedNavBar: null
   },
 
   mutations: {
@@ -53,6 +60,11 @@ export default {
     [SET_OPEN_VCONSOLE](state, value) {
       state.openVConsole = value;
       defaultSettings.openVConsole = value;
+      setLocalData();
+    },
+    [SET_FIXED_NAV_BAR](state, value) {
+      state.fixedNavBar = value;
+      defaultSettings.fixedNavBar = value;
       setLocalData();
     }
   },
@@ -93,6 +105,20 @@ export default {
           return localOpenVConsole;
         } else {
           return defaultSettings.openVConsole;
+        }
+      }
+    },
+    fixedNavBar(state) {
+      if (typeof state.fixedNavBar === "boolean") {
+        return state.fixedNavBar;
+      } else {
+        const localFixedNavBar =
+          localStorage.getItem("settingsData") &&
+          JSON.parse(localStorage.getItem("settingsData")).fixedNavBar;
+        if (typeof localFixedNavBar === "boolean") {
+          return localFixedNavBar;
+        } else {
+          return defaultSettings.fixedNavBar;
         }
       }
     }

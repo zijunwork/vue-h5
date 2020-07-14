@@ -1,12 +1,13 @@
+<!--
+ * @Overview:   Settings
+ * @Author:     Zi_Jun
+ * @Email:      zijun2030@163.com
+ * @Date:       2020/7/14 19:44
+ * @Mark:
+ -->
+
 <template>
   <div class="views-settings">
-    <van-nav-bar
-      title="系统设置"
-      left-text=""
-      left-arrow
-      border
-      @click-left="onClickLeft"
-    />
     <van-cell-group>
       <van-cell center title="开启页面切换动画" icon="logistics">
         <template #right-icon>
@@ -40,6 +41,15 @@
           />
         </template>
       </van-cell>
+      <van-cell center title="全局启用导航栏" icon="setting-o">
+        <template #right-icon>
+          <van-switch
+            v-model="fixedNavBarValue"
+            size="24"
+            @change="onFixedNavBar"
+          />
+        </template>
+      </van-cell>
     </van-cell-group>
   </div>
 </template>
@@ -49,7 +59,6 @@ import {
   Cell,
   Switch,
   CellGroup,
-  NavBar,
   DropdownMenu,
   DropdownItem,
   Field
@@ -63,7 +72,6 @@ export default {
     [Cell.name]: Cell,
     [Switch.name]: Switch,
     [CellGroup.name]: CellGroup,
-    [NavBar.name]: NavBar,
     [DropdownMenu.name]: DropdownMenu,
     [DropdownItem.name]: DropdownItem,
     [Field.name]: Field
@@ -74,6 +82,7 @@ export default {
       openPageTransValue: "",
       transDirectionValue: "",
       openVConsoleValue: "",
+      fixedNavBarValue: "",
       appNameValue: "",
       transOption: [
         { text: "slide", value: "slide" },
@@ -86,22 +95,17 @@ export default {
     ...mapGetters("settings", [
       "openPageTrans",
       "transDirection",
-      "openVConsole"
+      "openVConsole",
+      "fixedNavBar"
     ])
   },
 
-  created() {
-    // this.openPageTransValue = this.openPageTrans;
-  },
-
-  mounted() {
-    // TODO...
-  },
   methods: {
     ...mapMutations("settings", [
       "SET_OPEN_PAGE_TRANS",
       "SET_TRANS_DIRECTION",
-      "SET_OPEN_VCONSOLE"
+      "SET_OPEN_VCONSOLE",
+      "SET_FIXED_NAV_BAR"
     ]),
 
     /**
@@ -126,6 +130,14 @@ export default {
      */
     onVConsoleChange(value) {
       this.SET_OPEN_VCONSOLE(value);
+    },
+
+    /**
+     * 全局启用导航栏
+     * @param value {boolean} 改变值
+     */
+    onFixedNavBar(value) {
+      this.SET_FIXED_NAV_BAR(value);
     },
 
     /**
@@ -164,6 +176,12 @@ export default {
             (vConsoleEl.style.display = "none");
         }
         this.openVConsoleValue = newV;
+      },
+      immediate: true
+    },
+    fixedNavBar: {
+      handler(newV) {
+        this.fixedNavBarValue = newV;
       },
       immediate: true
     }
