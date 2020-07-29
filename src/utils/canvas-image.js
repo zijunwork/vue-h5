@@ -1,5 +1,5 @@
 /*
- * @Overview:   Image-methods
+ * @Overview:   Canvas-image
  * @Author:     Zi_Jun
  * @Email:      zijun2030@163.com
  * @Date:       2020/7/11 15:44

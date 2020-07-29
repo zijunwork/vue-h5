@@ -41,6 +41,7 @@ module.exports = {
   publicPath: IS_PROD ? "/" : "/",
   outputDir: process.env.OUTPUT_DIR || "dist",
   productionSourceMap: false,
+  lintOnSave: process.env.NODE_ENV !== "production",
   parallel: require("os").cpus().length > 1,
   pwa: {
     iconPaths: {
@@ -142,7 +143,6 @@ module.exports = {
       config.plugin("analyzer").use(BundleAnalyzerPlugin);
     }
   },
-
   configureWebpack: config => {
     if (IS_PROD) {
       config.externals = externals;
@@ -154,7 +154,6 @@ module.exports = {
       });
     }
   },
-
   devServer: {
     host: require("./src/utils/get-ip"),
     port: PORT,

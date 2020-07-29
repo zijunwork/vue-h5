@@ -9,7 +9,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DemoHome from "views/DemoHome.vue";
-import { IS_PROD } from "utils/const";
+import { IS_PROD } from "utils/validate";
 
 Vue.use(VueRouter);
 

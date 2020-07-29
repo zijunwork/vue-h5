@@ -31,7 +31,7 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { NavBar } from "vant";
-import { getBrowser } from "utils/device-methods";
+import { getBrowser } from "utils/common-methods";
 
 export default {
   name: "App",

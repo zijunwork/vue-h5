@@ -5,7 +5,7 @@
  * @Date:       2020/7/14 20:13
  * @Mark:       //
  */
-import { IS_PROD } from "utils/const";
+import { IS_PROD } from "utils/validate";
 
 let apiFiles = IS_PROD
   ? require.context("./modules", true, /^((?!exclude).)*\.js$/)
