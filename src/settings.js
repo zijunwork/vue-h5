@@ -6,5 +6,7 @@ module.exports = {
   // 是否开启VConsole
   openVConsole: true,
   // 是否全局开启导航栏
-  fixedNavBar: false
+  fixedNavBar: false,
+  // 语言: zh-CN(默认)/zh-HK/en-US
+  lang: "zh-CN"
 };

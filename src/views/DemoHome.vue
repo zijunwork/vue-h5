@@ -12,15 +12,16 @@
       <svg-icon icon-class="logo" class="logo-icon"></svg-icon>
       <span>Vue-H5</span>
     </div>
-    <p class="demo-home-desc">集成式、优化式Vue+Vant框架</p>
-    <van-cell-group title="基本说明" class="demo-home-nav">
-      <van-cell title="系统UI级设置" is-link url="/settings" />
+    <p class="demo-home-desc">{{ $t("demo.des") }}</p>
+    <van-cell-group :title="$t('demo.groupTitle')" class="demo-home-nav">
+      <van-cell :title="$t('demo.childTitle[0]')" is-link url="/settings"/>
     </van-cell-group>
   </div>
 </template>
 
 <script>
-import { CellGroup, Cell } from "vant";
+import {Cell, CellGroup} from "vant";
+
 export default {
   name: "DemoHome",
 

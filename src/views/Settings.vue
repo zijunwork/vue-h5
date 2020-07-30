@@ -9,19 +9,19 @@
 <template>
   <div class="views-settings">
     <van-cell-group>
-      <van-cell center title="开启页面切换动画" icon="logistics">
+      <van-cell :title="$t('cellTitle[0]')" center icon="logistics">
         <template #right-icon>
           <van-switch
-            v-model="openPageTransValue"
-            size="24"
-            @change="onOpenPageTransChange"
+              v-model="openPageTransValue"
+              size="24"
+              @change="onOpenPageTransChange"
           />
         </template>
       </van-cell>
       <van-cell
-        title="页面切换样式"
-        icon="exchange"
-        :title-class="{ 'disable-show': !openPageTrans }"
+          :title="$t('cellTitle[1]')"
+          icon="exchange"
+          :title-class="{ 'disable-show': !openPageTrans }"
       >
         <van-dropdown-menu>
           <van-dropdown-item
@@ -32,38 +32,40 @@
           />
         </van-dropdown-menu>
       </van-cell>
-      <van-cell center title="开启VConsole" icon="eye-o">
+      <van-cell :title="$t('cellTitle[2]')" center icon="eye-o">
         <template #right-icon>
           <van-switch
-            v-model="openVConsoleValue"
-            size="24"
-            @change="onVConsoleChange"
+              v-model="openVConsoleValue"
+              size="24"
+              @change="onVConsoleChange"
           />
         </template>
       </van-cell>
-      <van-cell center title="全局启用导航栏" icon="setting-o">
+      <van-cell :title="$t('cellTitle[3]')" center icon="setting-o">
         <template #right-icon>
           <van-switch
-            v-model="fixedNavBarValue"
-            size="24"
-            @change="onFixedNavBar"
+              v-model="fixedNavBarValue"
+              size="24"
+              @change="onFixedNavBar"
           />
         </template>
+      </van-cell>
+      <van-cell :title="$t('cellTitle[4]')" icon="flag-o">
+        <van-dropdown-menu>
+          <van-dropdown-item
+              :options="langOption"
+              @change="onLangChange"
+              v-model="langValue"
+          />
+        </van-dropdown-menu>
       </van-cell>
     </van-cell-group>
   </div>
 </template>
 
 <script>
-import {
-  Cell,
-  Switch,
-  CellGroup,
-  DropdownMenu,
-  DropdownItem,
-  Field
-} from "vant";
-import { mapGetters, mapMutations } from "vuex";
+import {Cell, CellGroup, DropdownItem, DropdownMenu, Field, Switch} from "vant";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
   name: "Settings",
@@ -85,8 +87,14 @@ export default {
       fixedNavBarValue: "",
       appNameValue: "",
       transOption: [
-        { text: "slide", value: "slide" },
-        { text: "fade", value: "fade" }
+        {text: "slide", value: "slide"},
+        {text: "fade", value: "fade"}
+      ],
+      langValue: "",
+      langOption: [
+        {text: "简体中文", value: "zh-CN"},
+        {text: "繁體中文", value: "zh-HK"},
+        {text: "English", value: "en-US"}
       ]
     };
   },
@@ -96,7 +104,8 @@ export default {
       "openPageTrans",
       "transDirection",
       "openVConsole",
-      "fixedNavBar"
+      "fixedNavBar",
+      "lang"
     ])
   },
 
@@ -105,7 +114,8 @@ export default {
       "SET_OPEN_PAGE_TRANS",
       "SET_TRANS_DIRECTION",
       "SET_OPEN_VCONSOLE",
-      "SET_FIXED_NAV_BAR"
+      "SET_FIXED_NAV_BAR",
+      "SET_LANG"
     ]),
 
     /**
@@ -141,6 +151,15 @@ export default {
     },
 
     /**
+     * 设置多语言
+     * @param value {boolean} 改变值
+     */
+    onLangChange(value) {
+      this.SET_LANG(value);
+      location.reload();
+    },
+
+    /**
      * 返回
      */
     onClickLeft() {
@@ -173,7 +192,7 @@ export default {
         } else {
           process.env.NODE_ENV === "development" &&
             vConsoleEl &&
-            (vConsoleEl.style.display = "none");
+          (vConsoleEl.style.display = "none");
         }
         this.openVConsoleValue = newV;
       },
@@ -182,6 +201,12 @@ export default {
     fixedNavBar: {
       handler(newV) {
         this.fixedNavBarValue = newV;
+      },
+      immediate: true
+    },
+    lang: {
+      handler(newV) {
+        this.langValue = newV;
       },
       immediate: true
     }

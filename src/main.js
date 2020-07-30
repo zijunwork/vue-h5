@@ -10,6 +10,7 @@ import "styles/index.less";
 import "utils/init-events";
 import settings from "./settings";
 import apis from "./api";
+import i18n from "./lang/index";
 
 Vue.prototype.$settings = settings;
 Vue.prototype.$apis = apis;
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === "development" && settings.openVConsole) {
 }
 
 new Vue({
+  i18n,
   router,
   store,
   render: h => h(App)

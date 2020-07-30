@@ -3172,7 +3172,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dayjs@^1.8.30:
+dayjs@1.8.30:
   version "1.8.30"
   resolved "https://r.cnpmjs.org/dayjs/download/dayjs-1.8.30.tgz#d3b314d3ccdc179015d915fd3c6e14422c026378"
   integrity sha1-07MU08zcF5AV2RX9PG4UQiwCY3g=
@@ -5640,7 +5640,7 @@ lodash.uniq@^4.5.0:
   resolved "https://r.cnpmjs.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.3:
+lodash@4.17.19, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3:
   version "4.17.19"
   resolved "https://r.cnpmjs.org/lodash/download/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha1-5I3e2+MLMyF4PFtDAfvTU7weSks=
@@ -9103,6 +9103,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://r.cnpmjs.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
+
+vue-i18n@^8.19.0:
+  version "8.19.0"
+  resolved "https://r.cnpmjs.org/vue-i18n/download/vue-i18n-8.19.0.tgz#4326ade6cba7e18b22030ac1a14c59864b6dfc43"
+  integrity sha1-Qyat5sun4YsiAwrBoUxZhktt/EM=
 
 vue-lazyload@1.2.3:
   version "1.2.3"

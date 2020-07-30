@@ -5,13 +5,16 @@
  * @Date:       2020/7/11 13:55
  * @Mark:       // There are not exist in Production
  */
+import i18n from "@/lang/index";
+
+console.log(i18n);
 
 export default [
   {
     path: "/settings",
     name: "Settings",
     meta: {
-      title: "系统设置",
+      title: i18n.t("route.title.name"),
       keepAlive: true,
       showNavBar: true,
       requireAuth: false

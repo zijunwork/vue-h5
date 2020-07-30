@@ -10,14 +10,17 @@ const [
   SET_TRANS_DIRECTION,
   SET_OPEN_PAGE_TRANS,
   SET_OPEN_VCONSOLE,
-  SET_FIXED_NAV_BAR
+  SET_FIXED_NAV_BAR,
+  SET_LANG
 ] = [
   "SET_TRANS_DIRECTION",
   "SET_OPEN_PAGE_TRANS",
   "SET_OPEN_VCONSOLE",
-  "SET_FIXED_NAV_BAR"
+  "SET_FIXED_NAV_BAR",
+  "SET_LANG"
 ];
 import defaultSettings from "../../settings";
+
 const getTransDirection = () => {
   let res = "";
   switch (defaultSettings.transDirection) {
@@ -43,7 +46,8 @@ export default {
     openPageTrans: null,
     transDirection: "",
     openVConsole: null,
-    fixedNavBar: null
+    fixedNavBar: null,
+    lang: null
   },
 
   mutations: {
@@ -65,6 +69,11 @@ export default {
     [SET_FIXED_NAV_BAR](state, value) {
       state.fixedNavBar = value;
       defaultSettings.fixedNavBar = value;
+      setLocalData();
+    },
+    [SET_LANG](state, value) {
+      state.lang = value;
+      defaultSettings.lang = value;
       setLocalData();
     }
   },
@@ -121,6 +130,15 @@ export default {
           return defaultSettings.fixedNavBar;
         }
       }
+    },
+    lang(state) {
+      return (
+        state.lang ||
+        (localStorage.getItem("settingsData") &&
+          JSON.parse(localStorage.getItem("settingsData")).lang) ||
+        defaultSettings.lang ||
+        "zh-CN"
+      );
     }
   }
 };
