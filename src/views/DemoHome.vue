@@ -14,7 +14,7 @@
     </div>
     <p class="demo-home-desc">{{ $t("demo.des") }}</p>
     <van-cell-group :title="$t('demo.groupTitle')" class="demo-home-nav">
-      <van-cell :title="$t('demo.childTitle[0]')" is-link url="/settings"/>
+      <van-cell :title="$t('demo.childTitle[0]')" is-link url="/settings" />
     </van-cell-group>
   </div>
 </template>

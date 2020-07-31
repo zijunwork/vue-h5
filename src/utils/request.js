@@ -70,15 +70,15 @@ const removeCommonPending = config => {
 ========================================================*/
 function handleCodeError(code, data, msg) {
   Dialog.close();
-  console.log({code});
-  console.log({data});
-  console.log({msg});
+  console.log({ code });
+  console.log({ data });
+  console.log({ msg });
   // 以下为Demo示例
   if (code === 401) {
     Dialog.alert({
       // message: "请重新登录"
     }).then(() => {
-      router.push({name: "userLogin"});
+      router.push({ name: "userLogin" });
     });
   } else {
     Toast.fail(msg);
@@ -89,17 +89,17 @@ function handleCodeError(code, data, msg) {
 状态码（Status）的错误处理，提示
 ========================================================*/
 const ERROR_MESSAGE = [
-  {code: 400, msg: i18n.t("request.errorCodeMsg.e400")},
-  {code: 401, msg: i18n.t("request.errorCodeMsg.e401")},
-  {code: 403, msg: i18n.t("request.errorCodeMsg.e403")},
-  {code: 404, msg: i18n.t("request.errorCodeMsg.e404")},
-  {code: 408, msg: i18n.t("request.errorCodeMsg.e408")},
-  {code: 500, msg: i18n.t("request.errorCodeMsg.e500")},
-  {code: 501, msg: i18n.t("request.errorCodeMsg.e501")},
-  {code: 502, msg: i18n.t("request.errorCodeMsg.e502")},
-  {code: 503, msg: i18n.t("request.errorCodeMsg.e503")},
-  {code: 504, msg: i18n.t("request.errorCodeMsg.e504")},
-  {code: 505, msg: i18n.t("request.errorCodeMsg.e505")}
+  { code: 400, msg: i18n.t("request.errorCodeMsg.e400") },
+  { code: 401, msg: i18n.t("request.errorCodeMsg.e401") },
+  { code: 403, msg: i18n.t("request.errorCodeMsg.e403") },
+  { code: 404, msg: i18n.t("request.errorCodeMsg.e404") },
+  { code: 408, msg: i18n.t("request.errorCodeMsg.e408") },
+  { code: 500, msg: i18n.t("request.errorCodeMsg.e500") },
+  { code: 501, msg: i18n.t("request.errorCodeMsg.e501") },
+  { code: 502, msg: i18n.t("request.errorCodeMsg.e502") },
+  { code: 503, msg: i18n.t("request.errorCodeMsg.e503") },
+  { code: 504, msg: i18n.t("request.errorCodeMsg.e504") },
+  { code: 505, msg: i18n.t("request.errorCodeMsg.e505") }
 ];
 
 /*========================================================

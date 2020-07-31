@@ -241,12 +241,12 @@ export const switchVConsole = value => {
   if (vConsoleEl) {
     if (value) {
       process.env.NODE_ENV === "development" &&
-      vConsoleEl &&
-      (vConsoleEl.style.display = "block");
+        vConsoleEl &&
+        (vConsoleEl.style.display = "block");
     } else {
       process.env.NODE_ENV === "development" &&
-      vConsoleEl &&
-      (vConsoleEl.style.display = "none");
+        vConsoleEl &&
+        (vConsoleEl.style.display = "none");
     }
   }
 };

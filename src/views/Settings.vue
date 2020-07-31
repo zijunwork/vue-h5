@@ -12,50 +12,50 @@
       <van-cell :title="$t('cellTitle[0]')" center icon="logistics">
         <template #right-icon>
           <van-switch
-              @change="onOpenPageTransChange"
-              size="24"
-              v-model="openPageTransValue"
+            @change="onOpenPageTransChange"
+            size="24"
+            v-model="openPageTransValue"
           />
         </template>
       </van-cell>
       <van-cell
-          :title="$t('cellTitle[1]')"
-          :title-class="{ 'disable-show': !openPageTrans }"
-          icon="exchange"
+        :title="$t('cellTitle[1]')"
+        :title-class="{ 'disable-show': !openPageTrans }"
+        icon="exchange"
       >
         <van-dropdown-menu>
           <van-dropdown-item
-              :disabled="!openPageTrans"
-              :options="transOption"
-              @change="onTransDirectionChange"
-              v-model="transDirectionValue"
+            :disabled="!openPageTrans"
+            :options="transOption"
+            @change="onTransDirectionChange"
+            v-model="transDirectionValue"
           />
         </van-dropdown-menu>
       </van-cell>
       <van-cell :title="$t('cellTitle[2]')" center icon="eye-o">
         <template #right-icon>
           <van-switch
-              @change="onVConsoleChange"
-              size="24"
-              v-model="openVConsoleValue"
+            @change="onVConsoleChange"
+            size="24"
+            v-model="openVConsoleValue"
           />
         </template>
       </van-cell>
       <van-cell :title="$t('cellTitle[3]')" center icon="setting-o">
         <template #right-icon>
           <van-switch
-              @change="onFixedNavBar"
-              size="24"
-              v-model="fixedNavBarValue"
+            @change="onFixedNavBar"
+            size="24"
+            v-model="fixedNavBarValue"
           />
         </template>
       </van-cell>
       <van-cell :title="$t('cellTitle[4]')" icon="flag-o">
         <van-dropdown-menu>
           <van-dropdown-item
-              :options="langOption"
-              @change="onLangChange"
-              v-model="langValue"
+            :options="langOption"
+            @change="onLangChange"
+            v-model="langValue"
           />
         </van-dropdown-menu>
       </van-cell>
@@ -88,14 +88,14 @@ export default {
       fixedNavBarValue: "",
       appNameValue: "",
       transOption: [
-        {text: "slide", value: "slide"},
-        {text: "fade", value: "fade"}
+        { text: "slide", value: "slide" },
+        { text: "fade", value: "fade" }
       ],
       langValue: "",
       langOption: [
-        {text: "简体中文", value: "zh-CN"},
-        {text: "繁體中文", value: "zh-HK"},
-        {text: "English", value: "en-US"}
+        { text: "简体中文", value: "zh-CN" },
+        { text: "繁體中文", value: "zh-HK" },
+        { text: "English", value: "en-US" }
       ]
     };
   },
@@ -182,8 +182,8 @@ export default {
      */
     handleTransDirection(newV) {
       this.transDirectionValue = newV.includes("slide")
-          ? "slide"
-          : this.transDirection;
+        ? "slide"
+        : this.transDirection;
     },
 
     /**

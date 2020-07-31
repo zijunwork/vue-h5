@@ -17,16 +17,16 @@
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view
-            :class="[showNavBar ? 'nav-router' : 'common-router']"
-            :key="$route.name"
-            class="router"
-        ></router-view>
-      </keep-alive>
-      <router-view
           :class="[showNavBar ? 'nav-router' : 'common-router']"
           :key="$route.name"
           class="router"
-          v-else
+        ></router-view>
+      </keep-alive>
+      <router-view
+        :class="[showNavBar ? 'nav-router' : 'common-router']"
+        :key="$route.name"
+        class="router"
+        v-else
       ></router-view>
     </transition>
   </div>
@@ -82,20 +82,20 @@ export default {
     watchRouter(to, from) {
       this.pageTitle = to.meta.title;
       if (
-          this.openPageTrans &&
-          this.transDirection &&
-          this.transDirection.includes("slide")
+        this.openPageTrans &&
+        this.transDirection &&
+        this.transDirection.includes("slide")
       ) {
         to.meta.index &&
-        this.SET_TRANS_DIRECTION(
+          this.SET_TRANS_DIRECTION(
             to.meta.index > (from.meta.index || -1)
-                ? "slide-left"
-                : "slide-right"
-        );
+              ? "slide-left"
+              : "slide-right"
+          );
       } else if (
-          this.openPageTrans &&
-          this.transDirection &&
-          this.transDirection === "fade"
+        this.openPageTrans &&
+        this.transDirection &&
+        this.transDirection === "fade"
       ) {
         this.SET_TRANS_DIRECTION("fade");
       } else {
