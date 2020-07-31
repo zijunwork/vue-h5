@@ -17,21 +17,24 @@
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view
-          class="router"
-          :class="[showNavBar ? 'nav-router' : 'common-router']"
+            class="router"
+            :key="$route.name"
+            :class="[showNavBar ? 'nav-router' : 'common-router']"
         ></router-view>
       </keep-alive>
       <router-view
-        v-else
-        :class="[showNavBar ? 'nav-router' : 'common-router']"
+          v-else
+          :key="$route.name"
+          class="router"
+          :class="[showNavBar ? 'nav-router' : 'common-router']"
       ></router-view>
     </transition>
   </div>
 </template>
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { NavBar } from "vant";
-import { getBrowser } from "utils/common-methods";
+import {mapGetters, mapMutations} from "vuex";
+import {NavBar} from "vant";
+import {getBrowser} from "utils/common-methods";
 
 export default {
   name: "App",
@@ -44,7 +47,7 @@ export default {
     return {
       isApp: getBrowser().isApp,
       isWeChat: getBrowser().isWeChat,
-      pageTitle: "首页"
+      pageTitle: this.$t("route.home.title")
     };
   },
 
@@ -69,43 +72,41 @@ export default {
     }
   },
 
-  mounted() {
-    // TODO...
-  },
-
   methods: {
     ...mapMutations("settings", ["SET_TRANS_DIRECTION"]),
 
     onClickLeft() {
       this.$router.go(-1);
-    }
-  },
+    },
 
-  watch: {
-    $route(to, from) {
-      console.log({ to });
+    watchRouter(to, from) {
       this.pageTitle = to.meta.title;
-      const toT = parseInt(to.meta.t),
-        fromT = parseInt(from.meta.t);
       if (
-        this.openPageTrans &&
-        this.transDirection &&
-        this.transDirection.includes("slide") &&
-        toT &&
-        fromT
+          this.openPageTrans &&
+          this.transDirection &&
+          this.transDirection.includes("slide")
       ) {
-        this.SET_TRANS_DIRECTION(`slide-${toT < fromT ? "right" : "left"}`);
+        to.meta.index &&
+        this.SET_TRANS_DIRECTION(
+            to.meta.index > (from.meta.index || -1)
+                ? "slide-left"
+                : "slide-right"
+        );
       } else if (
-        this.openPageTrans &&
-        this.transDirection &&
-        this.transDirection === "fade" &&
-        toT &&
-        fromT
+          this.openPageTrans &&
+          this.transDirection &&
+          this.transDirection === "fade"
       ) {
         this.SET_TRANS_DIRECTION("fade");
       } else {
         // Do nothing
       }
+    }
+  },
+
+  watch: {
+    $route(to, from) {
+      this.watchRouter(to, from);
     }
   }
 };

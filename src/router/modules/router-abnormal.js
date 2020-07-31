@@ -9,14 +9,15 @@
 export default [
   {
     path: "/404",
-    name: "NotFound",
+    name: "404",
     meta: {
       title: "NotFound",
-      keepAlive: true,
+      keepAlive: false,
       showNavBar: true,
-      requireAuth: false
+      requireAuth: false,
+      index: 100
     },
     component: () =>
-      import(/* webpackChunkName: "error" */ "../../views/abnormal/404.vue")
+      import(/* webpackChunkName: "common" */ "../../views/abnormal/404.vue")
   }
 ];

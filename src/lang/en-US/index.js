@@ -10,8 +10,32 @@ import {IS_PROD} from "utils/validate";
 let module = {
   app: {},
   route: {
-    title: {
-      name: "Home"
+    home: {
+      title: "Home"
+    },
+    settings: {
+      title: "System Settings"
+    },
+    request: {
+      loadingText: "Loading...",
+      unknownNetworkError: [
+        "NetworkError",
+        "NetworkTimeout",
+        "UnknownException"
+      ],
+      errorCodeMsg: {
+        e400: "RequestError",
+        e401: "Unauthorized, Please login",
+        e403: "AccessDenied",
+        e404: "RequestAddressError",
+        e408: "RequestTimedOut",
+        e500: "ServerInternalError",
+        e501: "ServiceNotImplemented",
+        e502: "GatewayError",
+        e503: "ServiceIsNotAvailable",
+        e504: "GatewayTimeout",
+        e505: "HTTPVersionIsNotSupported"
+      }
     }
   }
 };

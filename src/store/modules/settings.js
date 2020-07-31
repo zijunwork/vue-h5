@@ -31,12 +31,15 @@ const getTransDirection = () => {
       res = "fade";
       break;
     default:
-      break;
+      res = "slide-left";
   }
   return res;
 };
-const setLocalData = () => {
-  localStorage.setItem("settingsData", JSON.stringify(defaultSettings));
+
+const setLocalData = (attribute, value) => {
+  let localData = JSON.parse(localStorage.getItem("settingsData") || {});
+  localData[attribute] = value;
+  localStorage.setItem("settingsData", JSON.stringify(localData));
 };
 
 export default {
@@ -47,34 +50,29 @@ export default {
     transDirection: "",
     openVConsole: null,
     fixedNavBar: null,
-    lang: null
+    lang: ""
   },
 
   mutations: {
     [SET_OPEN_PAGE_TRANS](state, value) {
       state.openPageTrans = value;
-      defaultSettings.openPageTrans = value;
-      setLocalData();
+      setLocalData("openPageTrans", value);
     },
     [SET_TRANS_DIRECTION](state, direction) {
       state.transDirection = direction;
-      defaultSettings.transDirection = direction;
-      setLocalData();
+      setLocalData("transDirection", direction);
     },
     [SET_OPEN_VCONSOLE](state, value) {
       state.openVConsole = value;
-      defaultSettings.openVConsole = value;
-      setLocalData();
+      setLocalData("openVConsole", value);
     },
     [SET_FIXED_NAV_BAR](state, value) {
       state.fixedNavBar = value;
-      defaultSettings.fixedNavBar = value;
-      setLocalData();
+      setLocalData("fixedNavBar", value);
     },
     [SET_LANG](state, value) {
       state.lang = value;
-      defaultSettings.lang = value;
-      setLocalData();
+      setLocalData("lang", value);
     }
   },
 

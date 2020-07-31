@@ -10,7 +10,8 @@ import axios from "axios";
 import store from "@/store";
 import router from "@/router";
 import qs from "qs";
-import { Toast, Dialog } from "vant";
+import {Dialog, Toast} from "vant";
+import i18n from "@/lang";
 
 /*========================================================
 Request基本常量,可根据实际业务修改
@@ -38,7 +39,7 @@ const DEFAULT_TOAST_LOADING_OPTIONS = {
   forbidClick: true,
   loadingType: "spinner",
   duration: 0,
-  message: "加载中..."
+  message: i18n.t("request.loadingText")
 };
 
 // 显示Toast,支持自定义Options
@@ -69,12 +70,15 @@ const removeCommonPending = config => {
 ========================================================*/
 function handleCodeError(code, data, msg) {
   Dialog.close();
+  console.log({code});
+  console.log({data});
+  console.log({msg});
   // 以下为Demo示例
   if (code === 401) {
     Dialog.alert({
-      message: "请重新登录"
+      // message: "请重新登录"
     }).then(() => {
-      router.push({ name: "userLogin" });
+      router.push({name: "userLogin"});
     });
   } else {
     Toast.fail(msg);
@@ -85,17 +89,17 @@ function handleCodeError(code, data, msg) {
 状态码（Status）的错误处理，提示
 ========================================================*/
 const ERROR_MESSAGE = [
-  { code: 400, msg: "请求错误" },
-  { code: 401, msg: "未授权，请登录" },
-  { code: 403, msg: "拒绝访问" },
-  { code: 404, msg: "请求地址出错" },
-  { code: 408, msg: "请求超时" },
-  { code: 500, msg: "服务器内部错误" },
-  { code: 501, msg: "服务未实现" },
-  { code: 502, msg: "网关错误" },
-  { code: 503, msg: "服务不可用" },
-  { code: 504, msg: "网关超时" },
-  { code: 505, msg: "HTTP版本不受支持" }
+  {code: 400, msg: i18n.t("request.errorCodeMsg.e400")},
+  {code: 401, msg: i18n.t("request.errorCodeMsg.e401")},
+  {code: 403, msg: i18n.t("request.errorCodeMsg.e403")},
+  {code: 404, msg: i18n.t("request.errorCodeMsg.e404")},
+  {code: 408, msg: i18n.t("request.errorCodeMsg.e408")},
+  {code: 500, msg: i18n.t("request.errorCodeMsg.e500")},
+  {code: 501, msg: i18n.t("request.errorCodeMsg.e501")},
+  {code: 502, msg: i18n.t("request.errorCodeMsg.e502")},
+  {code: 503, msg: i18n.t("request.errorCodeMsg.e503")},
+  {code: 504, msg: i18n.t("request.errorCodeMsg.e504")},
+  {code: 505, msg: i18n.t("request.errorCodeMsg.e505")}
 ];
 
 /*========================================================
@@ -104,11 +108,11 @@ const ERROR_MESSAGE = [
 function handleUnknownNetworkError(message) {
   let msg;
   if (message === "Network Error") {
-    msg = "网络错误";
+    msg = i18n.t("request.unknownNetworkError[0]");
   } else if (message.includes("timeout")) {
-    msg = "网络超时";
+    msg = i18n.t("request.unknownNetworkError[1]");
   } else {
-    msg = "未知异常";
+    msg = i18n.t("request.unknownNetworkError[2]");
   }
   Toast.fail(msg);
 }

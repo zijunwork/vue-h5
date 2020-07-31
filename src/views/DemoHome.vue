@@ -28,30 +28,6 @@ export default {
   components: {
     [CellGroup.name]: CellGroup,
     [Cell.name]: Cell
-  },
-
-  mounted() {
-    this.getData();
-    this.getData();
-  },
-
-  methods: {
-    // jumpToAbout() {
-    //   this.$router.push({ name: "Settings" });
-    // }
-
-    async getData() {
-      try {
-        let res = await this.$apis.mockRequest({
-          page: 1,
-          count: 5,
-          type: "video"
-        });
-        console.log(res);
-      } catch (e) {
-        console.log({ e });
-      }
-    }
   }
 };
 </script>

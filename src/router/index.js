@@ -9,7 +9,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DemoHome from "views/DemoHome.vue";
-import { IS_PROD } from "utils/validate";
+import {IS_PROD} from "utils/validate";
+import i18n from "@/lang/index";
 
 Vue.use(VueRouter);
 
@@ -26,10 +27,11 @@ const routes = [
     path: "/",
     name: "DemoHome",
     meta: {
-      title: "首页",
-      keepAlive: false,
+      title: i18n.t("route.home.title"),
+      keepAlive: true,
       showNavBar: false,
-      requireAuth: false
+      requireAuth: false,
+      index: 0
     },
     component: DemoHome
   },
@@ -39,12 +41,13 @@ const routes = [
     name: "NotFound",
     meta: {
       title: "NotFound",
-      keepAlive: true,
+      keepAlive: false,
       showNavBar: true,
-      requireAuth: false
+      requireAuth: false,
+      index: 100
     },
     component: () =>
-      import(/* webpackChunkName: "error" */ "../views/abnormal/404.vue")
+      import(/* webpackChunkName: "common" */ "../views/abnormal/404.vue")
   }
 ];
 

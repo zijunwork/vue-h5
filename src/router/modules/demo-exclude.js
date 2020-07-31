@@ -7,17 +7,16 @@
  */
 import i18n from "@/lang/index";
 
-console.log(i18n);
-
 export default [
   {
     path: "/settings",
     name: "Settings",
     meta: {
-      title: i18n.t("route.title.name"),
+      title: i18n.t("route.settings.title"),
       keepAlive: true,
       showNavBar: true,
-      requireAuth: false
+      requireAuth: false,
+      index: 2
     },
     component: () => import(/* webpackChunkName: "demo" */ "views/Settings")
   }

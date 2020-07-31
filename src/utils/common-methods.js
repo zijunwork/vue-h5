@@ -229,3 +229,24 @@ export function getBrowser() {
     isApp
   };
 }
+
+/*********************************** Common **************************************/
+
+/**
+ * @description 开启/关闭 VConsole
+ * @param value {boolean} 开关
+ */
+export const switchVConsole = value => {
+  let vConsoleEl = document.querySelector("#__vconsole");
+  if (vConsoleEl) {
+    if (value) {
+      process.env.NODE_ENV === "development" &&
+      vConsoleEl &&
+      (vConsoleEl.style.display = "block");
+    } else {
+      process.env.NODE_ENV === "development" &&
+      vConsoleEl &&
+      (vConsoleEl.style.display = "none");
+    }
+  }
+};

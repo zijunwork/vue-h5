@@ -17,7 +17,10 @@ Vue.prototype.$apis = apis;
 
 Vue.config.productionTip = false;
 
-if (process.env.NODE_ENV === "development" && settings.openVConsole) {
+if (
+  process.env.NODE_ENV === "development" &&
+  store.getters["settings/openVConsole"]
+) {
   const VConsole = require("vconsole");
   new VConsole();
 }
