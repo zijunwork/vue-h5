@@ -37,7 +37,6 @@ textarea {
 
 .router {
   width: 100%;
-  height: 100%;
   position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
@@ -46,6 +45,22 @@ textarea {
   right: 0;
   bottom: 0;
   left: 0;
+  user-select: none;
+}
+.nav-router {
+  padding-top: 46px;
+  height: calc(100% - 46px);
+  @supports (bottom: env(safe-area-inset-bottom)){
+    padding-top: calc(env(safe-area-inset-top) + 46px);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  @supports (bottom: constant(safe-area-inset-bottom)) {
+    padding-top: calc(constant(safe-area-inset-top) + 46px);
+    padding-bottom: constant(safe-area-inset-bottom);
+  }
+}
+.common-router {
+  height: 100%;
   @supports (bottom: env(safe-area-inset-bottom)){
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -54,6 +69,34 @@ textarea {
     padding-top: constant(safe-area-inset-top);
     padding-bottom: constant(safe-area-inset-bottom);
   }
+}
+
+
+/*=====================================
+ Iconfont
+======================================*/
+@font-face { /* Unicode  */
+  font-family: "iconfont";
+  src: url("../assets/iconfont/iconfont.eot");
+  src: url("../assets/iconfont/iconfont.eot?#iefix") format("embedded-opentype"),
+  url("../assets/iconfont/iconfont.woff2") format("woff2"),
+  url("../assets/iconfont/iconfont.woff") format("woff"),
+  url("../assets/iconfont/iconfont.ttf") format("truetype"),
+  url("../assets/iconfont/iconfont.svg#iconfont") format("svg");
+}
+.iconfont {
+  font-family: "iconfont", serif !important;
+  font-size: 1em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 
 /*=====================================
@@ -73,7 +116,7 @@ textarea {
 .fade-enter-active,
 .fade-leave-active{
   will-change: transform;
-  transition: all @transition-time;
+  transition: all @transition-time ease-in-out;
   position: absolute;
   width: 100%;
   left: 0;

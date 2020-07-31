@@ -6,12 +6,21 @@
  * @Mark:       //
  */
 
-const [SET_TRANS_DIRECTION, SET_OPEN_PAGE_TRANS, SET_OPEN_VCONSOLE] = [
+const [
+  SET_TRANS_DIRECTION,
+  SET_OPEN_PAGE_TRANS,
+  SET_OPEN_VCONSOLE,
+  SET_FIXED_NAV_BAR,
+  SET_LANG
+] = [
   "SET_TRANS_DIRECTION",
   "SET_OPEN_PAGE_TRANS",
-  "SET_OPEN_VCONSOLE"
+  "SET_OPEN_VCONSOLE",
+  "SET_FIXED_NAV_BAR",
+  "SET_LANG"
 ];
 import defaultSettings from "../../settings";
+
 const getTransDirection = () => {
   let res = "";
   switch (defaultSettings.transDirection) {
@@ -22,12 +31,15 @@ const getTransDirection = () => {
       res = "fade";
       break;
     default:
-      break;
+      res = "slide-left";
   }
   return res;
 };
-const setLocalData = () => {
-  localStorage.setItem("settingsData", JSON.stringify(defaultSettings));
+
+const setLocalData = (attribute, value) => {
+  let localData = JSON.parse(localStorage.getItem("settingsData") || {});
+  localData[attribute] = value;
+  localStorage.setItem("settingsData", JSON.stringify(localData));
 };
 
 export default {
@@ -36,24 +48,31 @@ export default {
   state: {
     openPageTrans: null,
     transDirection: "",
-    openVConsole: null
+    openVConsole: null,
+    fixedNavBar: null,
+    lang: ""
   },
 
   mutations: {
     [SET_OPEN_PAGE_TRANS](state, value) {
       state.openPageTrans = value;
-      defaultSettings.openPageTrans = value;
-      setLocalData();
+      setLocalData("openPageTrans", value);
     },
     [SET_TRANS_DIRECTION](state, direction) {
       state.transDirection = direction;
-      defaultSettings.transDirection = direction;
-      setLocalData();
+      setLocalData("transDirection", direction);
     },
     [SET_OPEN_VCONSOLE](state, value) {
       state.openVConsole = value;
-      defaultSettings.openVConsole = value;
-      setLocalData();
+      setLocalData("openVConsole", value);
+    },
+    [SET_FIXED_NAV_BAR](state, value) {
+      state.fixedNavBar = value;
+      setLocalData("fixedNavBar", value);
+    },
+    [SET_LANG](state, value) {
+      state.lang = value;
+      setLocalData("lang", value);
     }
   },
 
@@ -95,6 +114,29 @@ export default {
           return defaultSettings.openVConsole;
         }
       }
+    },
+    fixedNavBar(state) {
+      if (typeof state.fixedNavBar === "boolean") {
+        return state.fixedNavBar;
+      } else {
+        const localFixedNavBar =
+          localStorage.getItem("settingsData") &&
+          JSON.parse(localStorage.getItem("settingsData")).fixedNavBar;
+        if (typeof localFixedNavBar === "boolean") {
+          return localFixedNavBar;
+        } else {
+          return defaultSettings.fixedNavBar;
+        }
+      }
+    },
+    lang(state) {
+      return (
+        state.lang ||
+        (localStorage.getItem("settingsData") &&
+          JSON.parse(localStorage.getItem("settingsData")).lang) ||
+        defaultSettings.lang ||
+        "zh-CN"
+      );
     }
   }
 };

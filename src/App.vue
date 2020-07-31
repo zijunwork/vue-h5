@@ -8,63 +8,105 @@
 
 <template>
   <div id="app">
+    <van-nav-bar
+      :title="pageTitle"
+      left-arrow
+      @click-left="onClickLeft"
+      v-if="fixedNavBar || showNavBar"
+    />
     <transition :name="transitionName">
-      <keep-alive :max="10" v-if="$route.meta.keepAlive">
-        <router-view class="router"></router-view>
+      <keep-alive v-if="$route.meta.keepAlive">
+        <router-view
+          :class="[showNavBar ? 'nav-router' : 'common-router']"
+          :key="$route.name"
+          class="router"
+        ></router-view>
       </keep-alive>
-      <router-view v-else class="router"></router-view>
+      <router-view
+        :class="[showNavBar ? 'nav-router' : 'common-router']"
+        :key="$route.name"
+        class="router"
+        v-else
+      ></router-view>
     </transition>
   </div>
 </template>
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import { NavBar } from "vant";
+import { getBrowser } from "utils/common-methods";
 
 export default {
   name: "App",
 
+  components: {
+    [NavBar.name]: NavBar
+  },
+
   data() {
-    return {};
+    return {
+      isApp: getBrowser().isApp,
+      isWeChat: getBrowser().isWeChat,
+      pageTitle: this.$t("route.home.title")
+    };
   },
 
   computed: {
-    ...mapGetters("settings", ["openPageTrans", "transDirection"]),
+    ...mapGetters("settings", [
+      "openPageTrans",
+      "transDirection",
+      "fixedNavBar"
+    ]),
 
     transitionName() {
       return this.openPageTrans ? this.transDirection : "";
+    },
+
+    showNavBar() {
+      return (
+        (this.fixedNavBar ||
+          (this.$route.meta.showNavBar && this.$route.meta.showNavBar)) &&
+        !this.isApp &&
+        !this.isWeChat
+      );
     }
   },
 
-  mounted() {
-    // TODO...
-  },
-
   methods: {
-    ...mapMutations("settings", ["SET_TRANS_DIRECTION"])
-  },
+    ...mapMutations("settings", ["SET_TRANS_DIRECTION"]),
 
-  watch: {
-    $route(to, from) {
-      const toT = parseInt(to.meta.t),
-        fromT = parseInt(from.meta.t);
+    onClickLeft() {
+      this.$router.go(-1);
+    },
+
+    watchRouter(to, from) {
+      this.pageTitle = to.meta.title;
       if (
         this.openPageTrans &&
         this.transDirection &&
-        this.transDirection.includes("slide") &&
-        toT &&
-        fromT
+        this.transDirection.includes("slide")
       ) {
-        this.SET_TRANS_DIRECTION(`slide-${toT < fromT ? "right" : "left"}`);
+        to.meta.index &&
+          this.SET_TRANS_DIRECTION(
+            to.meta.index > (from.meta.index || -1)
+              ? "slide-left"
+              : "slide-right"
+          );
       } else if (
         this.openPageTrans &&
         this.transDirection &&
-        this.transDirection === "fade" &&
-        toT &&
-        fromT
+        this.transDirection === "fade"
       ) {
         this.SET_TRANS_DIRECTION("fade");
       } else {
         // Do nothing
       }
+    }
+  },
+
+  watch: {
+    $route(to, from) {
+      this.watchRouter(to, from);
     }
   }
 };

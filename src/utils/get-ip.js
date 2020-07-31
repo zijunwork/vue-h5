@@ -1,3 +1,11 @@
+/*
+ * @Overview:   Get-ip
+ * @Author:     Zi_Jun
+ * @Email:      zijun2030@163.com
+ * @Date:       2020/7/11 16:07
+ * @Mark:       //
+ */
+
 let os = require("os"),
   ip = "",
   iFaces = os.networkInterfaces();

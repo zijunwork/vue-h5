@@ -11,6 +11,7 @@
  *              6、 生产去除console
  *              7、 配置打包分析工具
  *              8、 配置前端gzip压缩
+ *              9、 Iconfont与SvgIcon组件共存兼容
  */
 
 const path = require("path");
@@ -38,8 +39,9 @@ const externals = {
 
 module.exports = {
   publicPath: IS_PROD ? "/" : "/",
-  outputDir: process.env.outputDir || "dist",
+  outputDir: process.env.OUTPUT_DIR || "dist",
   productionSourceMap: false,
+  lintOnSave: process.env.NODE_ENV !== "production",
   parallel: require("os").cpus().length > 1,
   pwa: {
     iconPaths: {
@@ -77,6 +79,21 @@ module.exports = {
       .set("assets", resolve("src/assets"))
       .set("store", resolve("src/store"))
       .set("styles", resolve("src/styles"));
+
+    config.module
+      .rule("svg")
+      .exclude.add(resolve("src/assets/icons"))
+      .end();
+    const svgRule = config.module.rule("icons");
+    svgRule.uses.clear();
+    svgRule.include.add(resolve("src/assets/icons"));
+    svgRule
+      .test(/\.svg$/)
+      .use("svg-sprite-loader")
+      .loader("svg-sprite-loader")
+      .options({
+        symbolId: "icon-[name]"
+      });
 
     if (IS_NOT_DEV) {
       config.optimization.splitChunks({
@@ -126,7 +143,6 @@ module.exports = {
       config.plugin("analyzer").use(BundleAnalyzerPlugin);
     }
   },
-
   configureWebpack: config => {
     if (IS_PROD) {
       config.externals = externals;
@@ -138,7 +154,6 @@ module.exports = {
       });
     }
   },
-
   devServer: {
     host: require("./src/utils/get-ip"),
     port: PORT,

@@ -1,3 +1,11 @@
+/*
+ * @Overview:   Init-events
+ * @Author:     Zi_Jun
+ * @Email:      zijun2030@163.com
+ * @Date:       2020/7/11 16:07
+ * @Mark:       //
+ */
+
 (function(doc, win) {
   // Rem适配 > 750px
   let docEl = doc.documentElement,
