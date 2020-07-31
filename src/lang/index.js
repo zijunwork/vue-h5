@@ -8,7 +8,7 @@
 
 import Vue from "vue";
 import VueI18n from "vue-i18n";
-import {Locale} from "vant";
+import { Locale } from "vant";
 import enUSVant from "vant/lib/locale/lang/en-US";
 import zhCNVant from "vant/lib/locale/lang/zh-CN";
 import zhHKVant from "vant/lib/locale/lang/zh-HK";

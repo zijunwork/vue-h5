@@ -64,9 +64,16 @@
 </template>
 
 <script>
-import {Cell, CellGroup, DropdownItem, DropdownMenu, Field, Switch} from "vant";
-import {mapGetters, mapMutations} from "vuex";
-import {switchVConsole} from "utils/common-methods";
+import {
+  Cell,
+  CellGroup,
+  DropdownItem,
+  DropdownMenu,
+  Field,
+  Switch
+} from "vant";
+import { mapGetters, mapMutations } from "vuex";
+import { switchVConsole } from "utils/common-methods";
 
 export default {
   name: "Settings",

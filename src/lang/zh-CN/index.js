@@ -6,7 +6,7 @@
  * @Mark:       //
  */
 
-import {IS_PROD} from "utils/validate";
+import { IS_PROD } from "utils/validate";
 
 let module = {
   app: {},

@@ -10,7 +10,7 @@ import axios from "axios";
 import store from "@/store";
 import router from "@/router";
 import qs from "qs";
-import {Dialog, Toast} from "vant";
+import { Dialog, Toast } from "vant";
 import i18n from "@/lang";
 
 /*========================================================

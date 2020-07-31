@@ -5,7 +5,7 @@
  * @Date:       2020/7/29 14:06
  * @Mark:       //
  */
-import {IS_PROD} from "utils/validate";
+import { IS_PROD } from "utils/validate";
 
 let module = {
   app: {},
