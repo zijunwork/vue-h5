@@ -17,16 +17,16 @@
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view
-            class="router"
-            :key="$route.name"
             :class="[showNavBar ? 'nav-router' : 'common-router']"
+            :key="$route.name"
+            class="router"
         ></router-view>
       </keep-alive>
       <router-view
-          v-else
+          :class="[showNavBar ? 'nav-router' : 'common-router']"
           :key="$route.name"
           class="router"
-          :class="[showNavBar ? 'nav-router' : 'common-router']"
+          v-else
       ></router-view>
     </transition>
   </div>

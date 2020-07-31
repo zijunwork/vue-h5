@@ -25,10 +25,10 @@
       >
         <van-dropdown-menu>
           <van-dropdown-item
-              v-model="transDirectionValue"
-              :options="transOption"
               :disabled="!openPageTrans"
+              :options="transOption"
               @change="onTransDirectionChange"
+              v-model="transDirectionValue"
           />
         </van-dropdown-menu>
       </van-cell>
