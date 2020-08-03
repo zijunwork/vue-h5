@@ -47,7 +47,8 @@
     "svg-sprite-loader": "5.0.0",
     "vconsole": "3.3.4",
     "vue-template-compiler": "2.6.11",
-    "webpack-bundle-analyzer": "3.8.0"
+    "webpack-bundle-analyzer": "3.8.0",
+    "weixin-js-sdk": "^1.6.0"
   },
   "husky": {
     "hooks": {

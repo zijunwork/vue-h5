@@ -250,3 +250,12 @@ export const switchVConsole = value => {
     }
   }
 };
+
+/**
+ * @description 微信获取用户信息授权
+ * @param config {Object} 授权参数对象
+ * ！ 注意 [redirectUrl]和[url]参数传入前需要对字符串进行encodeURIComponent(xxx)处理
+ */
+export const wxAuth = (config = { appId: "", redirectUrl: "", url: "" }) => {
+  window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${config.appId}&redirect_uri=${config.redirectUrl}&response_type=code&scope=snsapi_userinfo&state=${config.url}#wechat_redirect`;
+};
