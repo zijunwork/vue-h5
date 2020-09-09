@@ -9104,7 +9104,7 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://r.cnpmjs.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
 
-vue-i18n@^8.19.0:
+vue-i18n@8.19.0:
   version "8.19.0"
   resolved "https://r.cnpmjs.org/vue-i18n/download/vue-i18n-8.19.0.tgz#4326ade6cba7e18b22030ac1a14c59864b6dfc43"
   integrity sha1-Qyat5sun4YsiAwrBoUxZhktt/EM=
@@ -9342,6 +9342,11 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "https://r.cnpmjs.org/websocket-extensions/download/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha1-f4RzvIOd/YdgituV1+sHUhFXikI=
+
+weixin-js-sdk@^1.6.0:
+  version "1.6.0"
+  resolved "https://r.cnpmjs.org/weixin-js-sdk/download/weixin-js-sdk-1.6.0.tgz#ff50484d8118ce1208f11248cf4a1c0831577514"
+  integrity sha1-/1BITYEYzhII8RJIz0ocCDFXdRQ=
 
 which-module@^2.0.0:
   version "2.0.0"
