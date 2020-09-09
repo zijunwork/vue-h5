@@ -30,7 +30,7 @@ export default {
     [CLEAR_AXIOS_PROMISE_CANCEL_ARR](state) {
       if (state.axiosPromiseCancel.length !== 0) {
         state.axiosPromiseCancel.forEach(item => {
-          item && item.f();
+          item && item.f && item.f();
         });
         state.axiosPromiseCancel = [];
       }
@@ -40,8 +40,6 @@ export default {
       state.axiosPromiseCancel.splice(index, 1);
     }
   },
-
-  actions: {},
 
   getters: {
     axiosPromiseCancel(state) {

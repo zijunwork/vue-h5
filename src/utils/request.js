@@ -56,7 +56,7 @@ const hiddenLoading = () => {
 const removeCommonPending = config => {
   const cancelArr = store.getters["axios/axiosPromiseCancel"];
   if (cancelArr.length) {
-    for (let i = 0, len = cancelArr; i < len; i++) {
+    for (let i = 0, len = cancelArr.length; i < len; i++) {
       if (cancelArr[i].u === `${config.url}&${config.method}`) {
         store.commit("axios/CLEAR_COMMON_AXIOS_PROMISE_CANCEL", i);
       }
