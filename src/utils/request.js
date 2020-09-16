@@ -163,6 +163,7 @@ Axios.interceptors.request.use(
 ========================================================*/
 Axios.interceptors.response.use(
   response => {
+    store.commit("axios/CLEAR_AXIOS_PROMISE_CANCEL_ARR");
     // status为200,返回数据处理
     hiddenLoading();
     const { code, data, msg } = response.data;
