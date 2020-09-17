@@ -60,7 +60,7 @@ const removeCommonPending = config => {
     : `${config.baseURL}${config.url}&${config.method}`;
   if (cancelArr.length) {
     for (let i = 0, len = cancelArr.length; i < len; i++) {
-      if (cancelArr[i].u === URL) {
+      if (cancelArr[i] && cancelArr[i].u === URL) {
         store.commit("axios/CLEAR_COMMON_AXIOS_PROMISE_CANCEL", i);
       }
     }
