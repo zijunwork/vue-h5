@@ -55,9 +55,12 @@ const hiddenLoading = () => {
 // 取消重复请求
 const removeCommonPending = config => {
   const cancelArr = store.getters["axios/axiosPromiseCancel"];
+  const URL = config.url.includes(config.baseURL)
+    ? `${config.url}&${config.method}`
+    : `${config.baseURL}${config.url}&${config.method}`;
   if (cancelArr.length) {
     for (let i = 0, len = cancelArr.length; i < len; i++) {
-      if (cancelArr[i].u === `${config.url}&${config.method}`) {
+      if (cancelArr[i].u === URL) {
         store.commit("axios/CLEAR_COMMON_AXIOS_PROMISE_CANCEL", i);
       }
     }
@@ -128,7 +131,7 @@ Axios.interceptors.request.use(
     // 发起请求时保存页面请求
     config.cancelToken = new axios.CancelToken(cancel => {
       store.commit("axios/SET_AXIOS_PROMISE_CANCEL_ARR", {
-        u: `${config.url}&${config.method}`,
+        u: `${config.baseURL}${config.url}&${config.method}`,
         f: cancel
       });
     });
