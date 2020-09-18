@@ -179,10 +179,6 @@ Axios.interceptors.response.use(
     }
   },
   error => {
-    // 终结promise链
-    if (Axios.isCancel(error)) {
-      return new Promise(() => {});
-    }
     // 请求所得到的响应的状态码超出了2xx | 请求完全得不到响应
     hiddenLoading();
     if (error.response) {
@@ -191,6 +187,10 @@ Axios.interceptors.response.use(
       msg ? Toast.fail(msg) : handleUnknownNetworkError(error.message, status);
     } else {
       handleUnknownNetworkError(error.message);
+    }
+    // 终结promise链
+    if (Axios.isCancel(error)) {
+      return new Promise(() => {});
     }
     return Promise.reject(error);
   }
