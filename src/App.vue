@@ -51,6 +51,11 @@ export default {
     };
   },
 
+  created() {
+    // 存储第一次进入页面的地址，用于ios微信分享url
+    localStorage.setItem("firstHref", location.href);
+  },
+
   computed: {
     ...mapGetters("settings", [
       "openPageTrans",

@@ -8,6 +8,7 @@
 
 import wx from "weixin-js-sdk";
 import commonApi from "../api/modules/common";
+import { IS_IOS } from "../utils/validate";
 
 // 后端返回的微信配置字段名称
 const WX_CONFIG_NAME = "wx_config";
@@ -56,7 +57,12 @@ const DEFAULT_SHOW_MENU = [
 ];
 
 const wxShare = (shareData = DEFAULT_SHARE_DATA, options) => {
-  const url = location.href.split("#")[0];
+  // 兼容ios和android微信分享
+  // IOS：每次切换路由，SPA的url是不会变的，发起签名请求的url参数必须是当前页面的url(就是最初进入页面时的url)
+  // Android：每次切换路由，SPA的url是会变的，发起签名请求的url参数必须是当前页面的url(不是最初进入页面时的)
+  const url = IS_IOS
+    ? localStorage.getItem("firstHref")
+    : location.href.split("#")[0];
   // 先获取localStorage中的微信配置，如果没有，再接口获取
   const WX_CONFIG = localStorage.wxConfig && JSON.parse(localStorage.wxConfig);
   if (WX_CONFIG && WX_CONFIG.url === url) {
