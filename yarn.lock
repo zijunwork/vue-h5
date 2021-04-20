@@ -1089,10 +1089,10 @@
   resolved "https://r.cnpmjs.org/@types/q/download/@types/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha1-FZJUFOCtLNdlv+9YhC9+JqesyyQ=
 
-"@vant/icons@1.2.3":
-  version "1.2.3"
-  resolved "https://r.cnpmjs.org/@vant/icons/download/@vant/icons-1.2.3.tgz#c46b7ddd32363f790944c3af974b73bda80df7a1"
-  integrity sha1-xGt93TI2P3kJRMOvl0tzvagN96E=
+"@vant/icons@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.2.5.tgz#f3db43c4b300300829e3c4e909beaa33d1cbe786"
+  integrity sha512-PNVSAaAzL3LtWK16qDCtMMfM2A5v+Ie9YTMVHF4QmumpuWxjyk0iUppJ+YRD0MjwR/CTx2OWkIB57+IAqbHnlg==
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -4023,8 +4023,8 @@ faye-websocket@~0.11.1:
 
 figgy-pudding@^3.5.1:
   version "3.5.2"
-  resolved "https://r.cnpmjs.org/figgy-pudding/download/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
-  integrity sha1-tO7oFIq7Adzx0aw0Nn1Z4S+mHW4=
+  resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
+  integrity sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw==
 
 figures@^3.0.0:
   version "3.2.0"
@@ -8202,9 +8202,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://r.cnpmjs.org/ssri/download/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha1-KjxBso3UW2K2Nnbst0ABJlrp7dg=
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
@@ -9048,13 +9048,13 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@2.9.0:
-  version "2.9.0"
-  resolved "https://r.cnpmjs.org/vant/download/vant-2.9.0.tgz#f8b95f83608d3e6b01c384f22e42224e4501ce7b"
-  integrity sha1-+Llfg2CNPmsBw4TyLkIiTkUBzns=
+vant@2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-2.10.0.tgz#96f4352662a7e252ee20b0ab38f7875870c830e2"
+  integrity sha512-3Impd/8pKjAUgzv/RFOma5nHKsNh/sWC2Ncr8sXkf/PyqdM4v1tlDz87EDM+smw3cTuwQxMLhV+lmvi/GtBl2A==
   dependencies:
     "@babel/runtime" "7.x"
-    "@vant/icons" "1.2.3"
+    "@vant/icons" "1.2.5"
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     vue-lazyload "1.2.3"
 
