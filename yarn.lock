@@ -1089,10 +1089,10 @@
   resolved "https://r.cnpmjs.org/@types/q/download/@types/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha1-FZJUFOCtLNdlv+9YhC9+JqesyyQ=
 
-"@vant/icons@1.2.3":
-  version "1.2.3"
-  resolved "https://r.cnpmjs.org/@vant/icons/download/@vant/icons-1.2.3.tgz#c46b7ddd32363f790944c3af974b73bda80df7a1"
-  integrity sha1-xGt93TI2P3kJRMOvl0tzvagN96E=
+"@vant/icons@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.2.5.tgz#f3db43c4b300300829e3c4e909beaa33d1cbe786"
+  integrity sha512-PNVSAaAzL3LtWK16qDCtMMfM2A5v+Ie9YTMVHF4QmumpuWxjyk0iUppJ+YRD0MjwR/CTx2OWkIB57+IAqbHnlg==
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -5640,10 +5640,10 @@ lodash.uniq@^4.5.0:
   resolved "https://r.cnpmjs.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4.17.19, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3:
-  version "4.17.19"
-  resolved "https://r.cnpmjs.org/lodash/download/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
-  integrity sha1-5I3e2+MLMyF4PFtDAfvTU7weSks=
+lodash@4.17.21, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^2.2.0:
   version "2.2.0"
@@ -9048,13 +9048,13 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@2.9.0:
-  version "2.9.0"
-  resolved "https://r.cnpmjs.org/vant/download/vant-2.9.0.tgz#f8b95f83608d3e6b01c384f22e42224e4501ce7b"
-  integrity sha1-+Llfg2CNPmsBw4TyLkIiTkUBzns=
+vant@2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-2.10.0.tgz#96f4352662a7e252ee20b0ab38f7875870c830e2"
+  integrity sha512-3Impd/8pKjAUgzv/RFOma5nHKsNh/sWC2Ncr8sXkf/PyqdM4v1tlDz87EDM+smw3cTuwQxMLhV+lmvi/GtBl2A==
   dependencies:
     "@babel/runtime" "7.x"
-    "@vant/icons" "1.2.3"
+    "@vant/icons" "1.2.5"
     "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
     vue-lazyload "1.2.3"
 
